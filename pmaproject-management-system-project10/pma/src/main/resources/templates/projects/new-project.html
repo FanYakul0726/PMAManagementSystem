@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts::header"></head>
+<body>
+<nav th:replace="layouts::navbar"></nav>
+<div class="container">
+    <form th:action="@{/projects/save}" th:object="${project}" method="POST">
+
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input class="form-control" type="text" placeholder="项目名称" th:field="*{name}">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <select th:field="*{stage}">
+                    <option th:value="未开始">未开始</option>
+                    <option th:value="进行中">进行中</option>
+                    <option th:value="已完成">已完成</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <textarea type="text" placeholder="输入项目描述" th:field="*{description}"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <select th:field="*{students}" multiple="multiple">
+                    <option th:each="student : ${allStudents}" th:value="${student.studentId}" th:text="${student.name}"></option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-info" type="submit">新建项目</button>
+    </form>
+</div>
+</body>
+</html>

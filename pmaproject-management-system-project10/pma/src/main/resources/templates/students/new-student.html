@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts::header"></head>
+<body>
+
+<nav th:replace="layouts::navbar"></nav>
+
+<div class="container">
+    <form th:action="@{/students/save}" th:object="${student}" method="POST">
+
+        <input type="hidden" th:field="${student.studentId}">
+
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" placeholder="姓名" th:field="${student.name}">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="${student.name}"></span>
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" placeholder="微信号" th:field="${student.wechatId}">
+                <span th:if="${#fields.hasErrors('wechatId')}" th:errors="${student.wechatId}"></span>
+            </div>
+        </div><br>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" placeholder="邮箱" th:field="${student.email}">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="${student.email}"></span>
+            </div>
+        </div><br>
+        <button class="btn btn-info" type="submit">新建学生</button>
+    </form>
+</div>
+</body>
+</html>

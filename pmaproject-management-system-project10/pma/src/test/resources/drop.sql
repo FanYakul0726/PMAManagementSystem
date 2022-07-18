@@ -1,0 +1,3 @@
+DROP TABLE project_student IF EXISTS;
+DROP TABLE project IF EXISTS;
+DROP TABLE student IF EXISTS;
